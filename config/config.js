@@ -3,7 +3,7 @@ module.exports = {
   TELEGRAM_BOT_TOKEN: 'YOUR_TELEGRAM_BOT_TOKEN',
 
   // MongoDB Atlas URI (এখানে নিজের URI বসাবে)
-  MONGODB_URI: 'mongodb+srv://USERNAME:PASSWORD@cluster0.u2ft5ps.mongodb.net/telegram-task-bot?retryWrites=true&w=majority',
+  MONGODB_URI: 'mongodb+srv://mongodbpy_db_user:pPgtRKyHsm8GvJF2@cluster0.u2ft5ps.mongodb.net/?appName=Cluster0.u2ft5ps.mongodb.net/telegram-task-bot?retryWrites=true&w=majority',
 
   // Bot Configuration
   BOT_NAME: 'TaskBot',
