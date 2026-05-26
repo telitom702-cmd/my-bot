@@ -1,6 +1,6 @@
 module.exports = {
   // Telegram Bot Token
-  TELEGRAM_BOT_TOKEN: 'YOUR_TELEGRAM_BOT_TOKEN',
+  TELEGRAM_BOT_TOKEN: '8411636239:AAGj-zCnyBHvqnm6_EPwv3Di9eiQCsFlKh4',
   
   // Database Configuration
   MONGODB_URI: 'mongodb://localhost:27017/telegram-task-bot',
