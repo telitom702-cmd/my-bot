@@ -6,91 +6,115 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+
+  // ⚡ FIXED: username required বাদ দেওয়া হয়েছে
   username: {
     type: String,
-    default: 'no_username
+    default: 'no_username'
   },
+
   firstName: {
     type: String,
     required: true
   },
+
   lastName: {
     type: String,
     default: ''
   },
+
   languageCode: {
     type: String,
     default: 'en'
   },
+
   isBot: {
     type: Boolean,
     default: false
   },
+
   balance: {
     type: Number,
     default: 0
   },
+
   totalEarnings: {
     type: Number,
     default: 0
   },
+
+  // ⚡ NOTE: MongoDB TTL daily reset (optional feature)
   dailyTasksCompleted: {
     type: Number,
-    default: 0,
-    expires: '1d' // Daily reset
+    default: 0
   },
+
   level: {
     type: Number,
     default: 1
   },
+
   xp: {
     type: Number,
     default: 0
   },
+
   xpToNextLevel: {
     type: Number,
     default: 100
   },
+
   referredBy: {
     type: Number,
     ref: 'User'
   },
+
   referrals: [{
     type: Number,
     ref: 'User'
   }],
+
   lastActive: {
     type: Date,
     default: Date.now
   },
+
   joinedAt: {
     type: Date,
     default: Date.now
   },
+
   isActive: {
     type: Boolean,
     default: true
   },
+
   isBanned: {
     type: Boolean,
     default: false
   },
+
   banReason: {
     type: String
   },
+
   banDate: {
     type: Date
   },
+
   ipAddress: {
     type: String
   },
+
   deviceInfo: {
     type: String
   },
+
   suspiciousActivityCount: {
     type: Number,
     default: 0
   },
+
   lastSuspiciousActivity: {
     type: Date
   }
@@ -98,25 +122,25 @@ const UserSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Virtual for full name
-UserSchema.virtual('fullName').get(function() {
+// Virtual full name
+UserSchema.virtual('fullName').get(function () {
   return `${this.firstName} ${this.lastName}`.trim();
 });
 
-// Method to check if user can complete more tasks
-UserSchema.methods.canCompleteTask = function() {
-  return this.dailyTasksCompleted < process.env.MAX_DAILY_TASKS || 20;
+// Check task limit
+UserSchema.methods.canCompleteTask = function () {
+  return this.dailyTasksCompleted < (process.env.MAX_DAILY_TASKS || 20);
 };
 
-// Method to add balance
-UserSchema.methods.addBalance = function(amount) {
+// Add balance
+UserSchema.methods.addBalance = function (amount) {
   this.balance += amount;
   this.totalEarnings += amount;
   return this.save();
 };
 
-// Method to check level up
-UserSchema.methods.checkLevelUp = function() {
+// Level system
+UserSchema.methods.checkLevelUp = function () {
   if (this.xp >= this.xpToNextLevel) {
     this.level += 1;
     this.xp = this.xp - this.xpToNextLevel;
@@ -126,14 +150,14 @@ UserSchema.methods.checkLevelUp = function() {
   return false;
 };
 
-// Method to add XP
-UserSchema.methods.addXP = function(amount) {
+// Add XP
+UserSchema.methods.addXP = function (amount) {
   this.xp += amount;
   return this.checkLevelUp();
 };
 
-// Method to add referral
-UserSchema.methods.addReferral = function(refereeId) {
+// Add referral
+UserSchema.methods.addReferral = function (refereeId) {
   if (!this.referrals.includes(refereeId)) {
     this.referrals.push(refereeId);
     return this.save();
