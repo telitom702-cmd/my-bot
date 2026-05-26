@@ -7,7 +7,7 @@ module.exports = {
 
   // Bot Configuration
   BOT_NAME: 'TaskBot',
-  BOT_USERNAME: 'your_bot_username',
+  BOT_USERNAME: '@jacpotflm_bot',
 
   // Currency Configuration
   CURRENCY_NAME: 'Coins',
