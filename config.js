@@ -3,7 +3,7 @@ module.exports = {
   TELEGRAM_BOT_TOKEN: '8411636239:AAGj-zCnyBHvqnm6_EPwv3Di9eiQCsFlKh4',
   
   // Database Configuration
-  MONGODB_URI: 'mongodb://localhost:27017/telegram-task-bot',
+  MONGODB_URI: 'mongodb+srv://mongodbpy_db_user:pPgtRKyHsm8GvJF2@cluster0.u2ft5ps.mongodb.net/?appName=Cluster0',
   
   // Bot Configuration
   BOT_NAME: 'TaskBot',
@@ -30,7 +30,7 @@ module.exports = {
   REFERRAL_COMMISSION_PERCENTAGE: 10,
   
   // Admin Telegram IDs
-  ADMIN_IDS: [123456789, 987654321],
+  ADMIN_IDS: [8248792819],
   
   // Security Configuration
   MAX_REQUESTS_PER_MINUTE: 30,
@@ -44,7 +44,7 @@ module.exports = {
   ANALYTICS_INTERVAL_MINUTES: 60,
   
   // Screenshot Verification Group
-  SCREENSHOT_GROUP_ID: '-1001234567890',
+  SCREENSHOT_GROUP_ID: '-1003194263389',
   
   // Protected Link Configuration
   LINK_EXPIRY_MINUTES: 30,
