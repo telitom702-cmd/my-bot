@@ -83,9 +83,9 @@ Welcome back, ${user.firstName}! 👋
   await ctx.reply(welcomeMessage, {
     parse_mode: 'HTML',
     ...Markup.inlineKeyboard([
-      [Markup.callbackButton('📋 Main Menu', 'menu')],
-      [Markup.callbackButton('💰 Check Balance', 'balance')],
-      [Markup.callbackButton('🎯 View Tasks', 'tasks')]
+      [Markup.button.callback('📋 Main Menu', 'menu')],
+      [Markup.button.callback('💰 Check Balance', 'balance')],
+      [Markup.button.callback('🎯 View Tasks', 'tasks')]
     ])
   });
 });
