@@ -1,6 +1,6 @@
 const { Telegraf, Markup } = require('telegraf');
 const mongoose = require('mongoose');
-const config = require('./config/config');
+const config = require('../config/config');
 const User = require('./models/User');
 const Task = require('./models/Task');
 const Transaction = require('./models/Transaction');
